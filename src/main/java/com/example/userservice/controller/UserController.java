@@ -39,6 +39,7 @@ public class UserController {
         return greeting.getMessage();
     }
 
+    // 유저생성
     @PostMapping("/users")
     public ResponseEntity<ResponseUser> createUser(@RequestBody RequestUser user){
         
