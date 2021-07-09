@@ -5,7 +5,6 @@ import com.example.userservice.jpa.UserEntity;
 import com.example.userservice.jpa.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +24,9 @@ public class UserServiceImpl implements UserService{
         UserEntity userEntity = modelMapper.map(userDto , UserEntity.class);
         userEntity.setEncryptedPwd("encrypted-password");
         userRepository.save(userEntity);
-        return null;
+
+        UserDto returnUserDto = modelMapper.map(userEntity, UserDto.class);
+
+        return returnUserDto;
     }
 }
